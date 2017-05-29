@@ -1,0 +1,45 @@
+﻿<Window x:Class="PeopleManager.WinClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PeopleManager.WinClient"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="People Manager" Height="350" Width="525" Icon="icon.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Grid.Row="0" Grid.Column="0" Padding="10" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding People}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Street Name" Binding="{Binding StreetName}" />
+                <DataGridTextColumn Header="House Number" Binding="{Binding HouseNumber}" />
+                <DataGridTextColumn Header="Apartment Number" Binding="{Binding ApartmentNumber}" />
+                <DataGridTextColumn Header="Postal Code" Binding="{Binding PostalCode}" />
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" />
+                <DataGridTextColumn Header="Day of Birth" Binding="{Binding DayOfBirth, StringFormat=\{0:MM/dd/yyyy\}}" />
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="Auto" Grid.Row="1">
+            <Button Command="{Binding Save}" Margin="5" Width="100">Save</Button>
+            <Button Command="{Binding Cancel}"  Margin="5" Width="100">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>
